@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "letsencryptor/version"
-require_relative "letsencryptor/aws_route53/client"
+require_relative 'letsencryptor/version'
+require_relative 'letsencryptor/aws_route53/client'
+require_relative 'letsencryptor/heroku/client'
+
 module Letsencryptor
   class Error < StandardError; end
   # Your code goes here...
