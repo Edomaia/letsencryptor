@@ -10,15 +10,15 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'This is a gem that allows you to manage your letsencrypt certificates'
   spec.description = 'This is a gem that allows you to manage your letsencrypt certificates'
-  spec.homepage = "https://github.com/Edomaia/letsencryptor"
+  spec.homepage = 'https://github.com/Edomaia/letsencryptor'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.0.0'
 
-  spec.metadata['allowed_push_host'] = "https://rubygems.org"
+  spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = "https://github.com/Edomaia/letsencryptor"
-  spec.metadata['changelog_uri'] = "https://github.com/Edomaia/letsencryptor"
+  spec.metadata['source_code_uri'] = 'https://github.com/Edomaia/letsencryptor'
+  spec.metadata['changelog_uri'] = 'https://github.com/Edomaia/letsencryptor'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

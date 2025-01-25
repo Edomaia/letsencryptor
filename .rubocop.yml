@@ -5,3 +5,6 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+
+AllCops:
+  NewCops: enable
