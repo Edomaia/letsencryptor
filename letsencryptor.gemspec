@@ -5,20 +5,20 @@ require_relative 'lib/letsencryptor/version'
 Gem::Specification.new do |spec|
   spec.name = 'letsencryptor'
   spec.version = Letsencryptor::VERSION
-  spec.authors = ['edoardo maraia']
-  spec.email = ['edoardo.maraia@gmail.com']
+  spec.authors = ['edoardo maraia', 'eugen mueller']
+  spec.email = ['edoardo.maraia@gmail.com', 'eugen.mllr@gmail.com']
 
-  spec.summary = 'TODO: Write a short summary, because RubyGems requires one.'
-  spec.description = 'TODO: Write a longer description or delete this line.'
-  spec.homepage = "TODO: Put your gem's website or public repo URL here."
+  spec.summary = 'This is a gem that allows you to manage your letsencrypt certificates'
+  spec.description = 'This is a gem that allows you to manage your letsencrypt certificates'
+  spec.homepage = "https://github.com/Edomaia/letsencryptor"
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.0.0'
 
-  spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
+  spec.metadata['allowed_push_host'] = "https://rubygems.org"
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = "TODO: Put your gem's public repo URL here."
-  spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata['source_code_uri'] = "https://github.com/Edomaia/letsencryptor"
+  spec.metadata['changelog_uri'] = "https://github.com/Edomaia/letsencryptor"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
