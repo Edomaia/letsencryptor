@@ -27,7 +27,7 @@ jobs:
         bundler-cache: true
 
     - name: Run RuboCop
-      run: bundle exec rubocop --fail-level error
+      run: bundle exec rubocop --fail-level
     
     - name: Install Dependencies
       run: |
