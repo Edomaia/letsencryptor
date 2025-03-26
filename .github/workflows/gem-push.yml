@@ -24,6 +24,10 @@ jobs:
       uses: ruby/setup-ruby@v1 # v1.146.0
       with:
         ruby-version: 3.3.6
+        bundler-cache: true
+
+    - name: Run RuboCop
+      run: bundle exec rubocop --fail-level error
     
     - name: Install Dependencies
       run: |
@@ -32,14 +36,6 @@ jobs:
     - name: Run Specs
       run: |
         bundle exec rspec
-
-    - name: Cache Bundler Dependencies
-      uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-bundle-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-bundle-
 
     #- name: Publish to GPR
     #  run: |
