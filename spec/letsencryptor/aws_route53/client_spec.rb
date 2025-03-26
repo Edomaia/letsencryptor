@@ -14,9 +14,6 @@ module Aws
 
     module Errors
       class InvalidInput < StandardError
-        def initialize(message)
-          super
-        end
       end
     end
   end
