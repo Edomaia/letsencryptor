@@ -9,6 +9,7 @@ module Aws
     class Client
       def initialize(*); end
       def change_resource_record_sets(*); end
+      def test_dns_answer(*); end
     end
 
     module Errors
@@ -151,6 +152,38 @@ RSpec.describe Letsencryptor::AwsRoute53::Client do
       it 'raises the error' do
         expect { client.delete_txt_record(record_name, record_value) }
           .to raise_error(Aws::Route53::Errors::InvalidInput)
+      end
+    end
+  end
+
+  describe '#wait_for_record_propagation' do
+    let(:record_name) { '_acme-challenge.example.com' }
+    let(:record_value) { 'validation-token' }
+    let(:client) { described_class.new(hosted_zone_id: hosted_zone_id) }
+    let(:dns_response) { double('dns_response', record_data: [%("#{record_value}")]) }
+
+    before do
+      allow(route53_client).to receive(:test_dns_answer).and_return(dns_response)
+    end
+
+    it 'checks DNS propagation and returns true when record is found' do
+      expect(route53_client).to receive(:test_dns_answer).with(hash_including(
+                                                                 hosted_zone_id: hosted_zone_id,
+                                                                 record_name: record_name,
+                                                                 record_type: 'TXT'
+                                                               ))
+      result = client.wait_for_record_propagation(record_name, record_value, max_attempts: 3, delay: 0.01)
+      expect(result).to be true
+    end
+
+    context 'when record is not found after max attempts' do
+      before do
+        allow(route53_client).to receive(:test_dns_answer).and_return(double('dns_response', record_data: []))
+      end
+
+      it 'returns false' do
+        result = client.wait_for_record_propagation(record_name, record_value, max_attempts: 3, delay: 0.01)
+        expect(result).to be false
       end
     end
   end

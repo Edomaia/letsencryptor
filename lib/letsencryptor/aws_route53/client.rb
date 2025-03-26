@@ -48,6 +48,30 @@ module Letsencryptor
                                            })
       end
 
+      def wait_for_record_propagation(name, value, max_attempts: 60, delay: 5)
+        attempt = 0
+
+        while attempt < max_attempts
+          begin
+            response = client.test_dns_answer({
+                                                hosted_zone_id: hosted_zone_id,
+                                                record_name: name,
+                                                record_type: 'TXT'
+                                              })
+
+            found = response.record_data.any? { |data| data.include?(value) }
+            return true if found
+          rescue Aws::Route53::Errors::ServiceError => e
+            puts "DNS check error: #{e.message}. Retrying..."
+          end
+
+          sleep delay
+          attempt += 1
+        end
+
+        false
+      end
+
       private
 
       def initialize_client
