@@ -3,6 +3,11 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*_spec.rb'
 
+Metrics/MethodLength:
+  Enabled: true
+  Exclude:
+    - 'lib/letsencryptor/aws_route53/client.rb'
+
 Style/Documentation:
   Enabled: false
 
